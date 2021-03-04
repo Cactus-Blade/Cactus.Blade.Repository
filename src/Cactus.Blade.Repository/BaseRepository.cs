@@ -12,10 +12,10 @@ namespace Cactus.Blade.Repository
         protected readonly DbContext DbContext;
         protected readonly DbSet<T> DbSet;
 
-        public BaseRepository(DbContext dbContext)
+        public BaseRepository(DbContext context)
         {
-            DbContext = dbContext ?? throw new ArgumentException(nameof(dbContext));
-            DbSet = dbContext.Set<T>();
+            DbContext = context ?? throw new ArgumentException(nameof(context));
+            DbSet = DbContext.Set<T>();
         }
 
         public T SingleOrDefault(Expression<Func<T, bool>> predicate = null,
@@ -36,7 +36,7 @@ namespace Cactus.Blade.Repository
             if (orderBy.IsNotNull())
                 queryable = orderBy!(queryable);
 
-            return queryable.FirstOrDefault();
+            return queryable.SingleOrDefault();
         }
 
         public IPaginate<T> Select(Expression<Func<T, bool>> predicate = null,
