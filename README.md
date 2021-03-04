@@ -1,33 +1,31 @@
-# Cactus.Blade
+# Cactus.Blade.Repository
 
 ![Logo](Image/cactus-64.png)
 
-## What is Cactus.Blade
+## What is Cactus.Blade.Repository
 
-Cactus.Blade is a simple utility that solves a common problem pragmatically.
+Cactus.Blade.Repository is a simple generic repository wrapper library for entity framework core.
 
 ## Getting Started
 
 ### Installing
 
-Once you're game, simply add it to your project [through NuGet](https://www.nuget.org/packages/Cactus.Blade).
+Once you're game, simply add it to your project [through NuGet](https://www.nuget.org/packages/Cactus.Blade.Repository).
 
 NuGet Package Manager:
 
 ```bash
-    Install-Package Cactus.Blade
+    Install-Package Cactus.Blade.Repository
 ```
 
 NuGet CLI:
 
 ```bash
-    nuget install Cactus.Blade
+    nuget install Cactus.Blade.Repository
 ```
 
 ### Prerequisites
 
-The Cactus.Blade library is built on **netstandard2.1**. This means it's compatible with .NET 5.x and up, .NET Core 2.x and up and traditional .NET 4.6.1 and higher. See the Microsoft [docs on .NET Standard compatibility](https://docs.microsoft.com/en-us/dotnet/standard/net-standard#net-platforms-support).
+The Cactus.Blade.Repository library is built on **netstandard2.1**. This means it's compatible with .NET 5.x and up. See the Microsoft [docs on .NET Standard compatibility](https://docs.microsoft.com/en-us/dotnet/standard/net-standard#net-platforms-support).
 
-For traditional .NET 4.6.1+, you also need to have a more recent version of NuGet installed (NuGet v4 and up), which comes out-of-the-box with the latest updated versions of Visual Studio 2019 and [JetBrains Rider](https://www.jetbrains.com/rider/).
-
-Cactus.Blade is Copyright &copy; 2020 Mohammad Sadeq Sirjani under the [MIT license](LICENSE.txt).
+Cactus.Blade.Repository is Copyright &copy; 2020 Mohammad Sadeq Sirjani under the [MIT license](LICENSE).
