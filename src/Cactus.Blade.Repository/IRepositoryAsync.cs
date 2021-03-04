@@ -18,11 +18,7 @@ namespace Cactus.Blade.Repository
             bool enableTracking = true,
             bool ignoreQueryFilters = false);
 
-        Task<T> SingleOrDefaultAsync(Expression<Func<T, bool>> predicate = null,
-            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
-            params Func<IQueryable<T>, IIncludableQueryable<T, object>>[] includes);
-
-        Task<IPaginate<T>> Select(Expression<Func<T, bool>> predicate = null,
+        Task<IPaginate<T>> SelectAsync(Expression<Func<T, bool>> predicate = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
             Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null,
             int index = 0,

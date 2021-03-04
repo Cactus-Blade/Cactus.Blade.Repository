@@ -10,7 +10,7 @@ namespace Cactus.Blade.Repository
     {
         T SingleOrDefault(Expression<Func<T, bool>> predicate = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
-            params Func<IQueryable<T>, IIncludableQueryable<T, object>>[] includes);
+            Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null);
 
 
         IPaginate<T> Select(Expression<Func<T, bool>> predicate = null,

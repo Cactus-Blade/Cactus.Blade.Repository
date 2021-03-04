@@ -10,6 +10,6 @@ namespace Cactus.Blade.Repository.Paging
 
         public static IPaginate<TResult> ToPaginate<TSource, TResult>(this IEnumerable<TSource> sources,
             Func<IEnumerable<TSource>, IEnumerable<TResult>> converter, int index, int size, int from = 0) =>
-            new Paginate<TSource, TResult>(sources, converter, index, size, @from);
+            new Paginate<TSource, TResult>(sources, converter, index, size, from);
     }
 }

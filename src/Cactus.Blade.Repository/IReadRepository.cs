@@ -13,10 +13,6 @@ namespace Cactus.Blade.Repository
             Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null,
             bool enableTracking = true);
 
-        T SingleOrDefault(Expression<Func<T, bool>> predicate = null,
-            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
-            params Func<IQueryable<T>, IIncludableQueryable<T, object>>[] includes);
-
         IPaginate<T> Select(Expression<Func<T, bool>> predicate = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
             Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null,

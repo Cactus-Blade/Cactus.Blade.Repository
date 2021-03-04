@@ -12,15 +12,15 @@ namespace Cactus.Blade.Repository
     {
         Task<T> SingleOrDefaultAsync(Expression<Func<T, bool>> predicate = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
-            params Func<IQueryable<T>, IIncludableQueryable<T, object>>[] includes);
+            Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null);
 
-        Task<IPaginate<T>> Select(Expression<Func<T, bool>> predicate = null,
-            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
-            Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null,
-            int index = 0,
-            int size = 20);
+        Task<IPaginate<T>> SelectAsync(Expression<Func<T, bool>> predicate = null,
+             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+             Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null,
+             int index = 0,
+             int size = 20);
 
-        Task<IPaginate<TResult>> Select<TResult>(Expression<Func<T, TResult>> selector,
+        Task<IPaginate<TResult>> SelectAsync<TResult>(Expression<Func<T, TResult>> selector,
             Expression<Func<T, bool>> predicate = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
             Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null,
