@@ -8,7 +8,7 @@ namespace Cactus.Blade.Repository.Paging
 {
     public static class QueryablePaginateExtensions
     {
-        public static async Task<IPaginate<T>> ToPaginate<T>(this IQueryable<T> sources, int index, int size,
+        public static async Task<IPaginate<T>> ToPaginateAsync<T>(this IQueryable<T> sources, int index, int size,
             int from = 0, CancellationToken cancellationToken = default)
         {
             if (from > index)
