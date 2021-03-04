@@ -24,7 +24,15 @@ namespace Cactus.Blade.Repository
             int index = 0,
             int size = 20,
             bool enableTracking = true,
-            CancellationToken cancellationToken = default);
+            CancellationToken cancellationToken = default,
+            bool ignoreQueryFilters = false);
+
+        public Task<IPaginate<TResult>> SelectAsync<TResult>(Expression<Func<T, TResult>> selector,
+            Expression<Func<T, bool>> predicate = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null, int index = 0, int size = 20,
+            bool enableTracking = true, CancellationToken cancellationToken = default,
+            bool ignoreQueryFilters = false) where TResult : class;
 
         ValueTask<EntityEntry<T>> InsertAsync(T entity, CancellationToken cancellationToken = default);
         Task InsertAsync(params T[] entities);
