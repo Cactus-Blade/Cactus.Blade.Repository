@@ -1,6 +1,6 @@
 # Cactus.Blade.Repository
 
-![Logo](Image/cactus-64.png)
+![Logo](images/cactus-64.png)
 
 ## What is Cactus.Blade.Repository
 
