@@ -26,6 +26,6 @@ NuGet CLI:
 
 ### Prerequisites
 
-The Cactus.Blade.Repository library is built on **netstandard2.1**. This means it's compatible with .NET 5.x and up. See the Microsoft [docs on .NET Standard compatibility](https://docs.microsoft.com/en-us/dotnet/standard/net-standard#net-platforms-support).
+The Cactus.Blade.Repository library is built on **netcore 5.0**. This means it's compatible with .NET 5.x and up. See the Microsoft [docs on .NET Standard compatibility](https://docs.microsoft.com/en-us/dotnet/standard/net-standard#net-platforms-support).
 
 Cactus.Blade.Repository is Copyright &copy; 2021 Mohammad Sadeq Sirjani under the [Apache License](LICENSE).
