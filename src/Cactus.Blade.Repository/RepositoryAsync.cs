@@ -17,7 +17,7 @@ namespace Cactus.Blade.Repository
 
         public RepositoryAsync(DbContext context)
         {
-            var dbContext = context ?? throw new ArgumentException(nameof(context));
+            var dbContext = context ?? throw new ArgumentNullException(nameof(context));
             _dbSet = context.Set<T>();
         }
 
@@ -50,7 +50,7 @@ namespace Cactus.Blade.Repository
         public Task<IPaginate<T>> SelectAsync(Expression<Func<T, bool>> predicate = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
             Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null, int index = 0, int size = 20,
-            bool enableTracking = true, CancellationToken cancellationToken = default)
+            bool enableTracking = true, CancellationToken cancellationToken = default, bool ignoreQueryFilters = false)
         {
             IQueryable<T> queryable = _dbSet;
 
@@ -60,6 +60,9 @@ namespace Cactus.Blade.Repository
             if (!predicate.IsNotNull())
                 queryable = queryable.Where(predicate!);
 
+            if (!ignoreQueryFilters)
+                queryable = queryable.IgnoreQueryFilters();
+
             if (include.IsNotNull())
                 queryable = include!(queryable);
 
@@ -67,6 +70,32 @@ namespace Cactus.Blade.Repository
                 queryable = orderBy!(queryable);
 
             return queryable.ToPaginateAsync(index, size, cancellationToken: cancellationToken);
+        }
+
+        public Task<IPaginate<TResult>> SelectAsync<TResult>(Expression<Func<T, TResult>> selector,
+            Expression<Func<T, bool>> predicate = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null, int index = 0, int size = 20,
+            bool enableTracking = true, CancellationToken cancellationToken = default, bool ignoreQueryFilters = false) where TResult : class
+        {
+            IQueryable<T> queryable = _dbSet;
+
+            if (!enableTracking)
+                queryable = queryable.AsNoTracking();
+
+            if (!predicate.IsNotNull())
+                queryable = queryable.Where(predicate!);
+
+            if (!ignoreQueryFilters)
+                queryable = queryable.IgnoreQueryFilters();
+
+            if (include.IsNotNull())
+                queryable = include!(queryable);
+
+            if (orderBy.IsNotNull())
+                queryable = orderBy!(queryable);
+
+            return queryable.Select(selector).ToPaginateAsync(index, size, cancellationToken: cancellationToken);
         }
 
         public ValueTask<EntityEntry<T>> InsertAsync(T entity, CancellationToken cancellationToken = default) => _dbSet.AddAsync(entity, cancellationToken);
