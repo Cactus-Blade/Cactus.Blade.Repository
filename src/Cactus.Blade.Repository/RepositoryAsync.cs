@@ -44,7 +44,7 @@ namespace Cactus.Blade.Repository
             if (orderBy.IsNotNull())
                 queryable = orderBy!(queryable);
 
-            return queryable.SingleOrDefaultAsync();
+            return queryable.FirstOrDefaultAsync();
         }
 
         public Task<IPaginate<T>> SelectAsync(Expression<Func<T, bool>> predicate = null,

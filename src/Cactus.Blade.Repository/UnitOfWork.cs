@@ -54,7 +54,7 @@ namespace Cactus.Blade.Repository
 
         public TContext Context { get; }
 
-        internal object GetOrAddRepository(Type type, object repo)
+        public object GetOrAddRepository(Type type, object repo)
         {
             _repositories ??= new Dictionary<(Type type, string Name), object>();
 

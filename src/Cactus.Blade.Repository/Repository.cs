@@ -38,7 +38,7 @@ namespace Cactus.Blade.Repository
             if (orderBy.IsNotNull())
                 queryable = orderBy!(queryable);
 
-            return queryable.SingleOrDefault();
+            return queryable.FirstOrDefault();
         }
 
         public T Insert(T entity) => DbSet.Add(entity).Entity;
